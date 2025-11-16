@@ -1,3 +1,5 @@
+# 02_ID_Distribution_Figure_Generation.py
+
 import matplotlib.pyplot as plt
 
 # Data from synthetic dataset
@@ -24,3 +26,4 @@ for i, count in enumerate(counts):
     plt.text(i, count + 1, str(count), ha='center', va='bottom')
 
 plt.show()
+
