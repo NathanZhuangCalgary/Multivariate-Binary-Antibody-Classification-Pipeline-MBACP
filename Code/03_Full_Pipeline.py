@@ -1,22 +1,4 @@
-"""
-Binary Antibody Diagnostic Pipeline
----------------------------------------------------
-Purpose:
-    Analyze binary-coded antibody data to evaluate serological overlap 
-    between RA and SS (RF+ and RF− subsets).
-
-Key Features:
-    - Logistic regression separability with repeated cross-validation
-    - Chi-squared & Fisher's exact tests with multiple testing correction
-    - Euclidean & Jaccard distance analysis with bootstrap CIs (Jaccard Omitted from pipeline due to uninformative results)
-    - Comprehensive metrics (balanced accuracy, AUC, sensitivity, specificity)
-    - Automatic figure and table generation
-    - Complete data capture for publication tables
-
-Authors: Nathan Zhuang, Jacqueline Howells
-Version: CSBJ Submission Final Draft
-Python ≥3.13 required
-"""
+# 03_Full_Pipeline.py
 
 import pandas as pd
 import numpy as np
@@ -752,4 +734,5 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
