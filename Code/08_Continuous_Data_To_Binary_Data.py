@@ -1,4 +1,4 @@
-# 01_data_cleaning_final.py
+# 08_Continuous_Data_To_Binary_Data.py
 
 import os
 import pandas as pd
@@ -7,13 +7,13 @@ import numpy as np
 # -----------------------------
 # 0. Output directory
 # -----------------------------
-output_dir = r"C:\Users\natha\Desktop\ClinicalDatasetResearch\CleanedDataResults"
+output_dir = r"<output_path>"
 os.makedirs(output_dir, exist_ok=True)
 
 # -----------------------------
 # 1. Load raw Excel dataset
 # -----------------------------
-df = pd.read_excel(r"C:\Users\natha\Desktop\ClinicalDatasetResearch\Rheumatic and Autoimmune Disease Dataset.xlsx")
+df = pd.read_excel(r"<file_path>")
 
 # -----------------------------
 # 1b. Replace empty/blank cells with NaN
@@ -138,3 +138,4 @@ df_female.to_excel(os.path.join(output_dir,"cleaned_dataset_female.xlsx"), index
 
 print(f"Cleaned dataset saved to {output_dir}")
 print("Male and Female datasets saved separately.")
+
