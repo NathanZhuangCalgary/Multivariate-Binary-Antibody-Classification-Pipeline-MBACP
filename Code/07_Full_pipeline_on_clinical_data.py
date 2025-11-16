@@ -1,22 +1,4 @@
-"""
-Binary Antibody Diagnostic Pipeline — Enhanced Version with Complete Outputs
----------------------------------------------------
-Purpose:
-    Analyze binary-coded antibody data to evaluate serological patterns 
-    in SS stratified by RF status.
-
-Key Features:
-    - Logistic regression separability with repeated cross-validation
-    - Chi-squared & Fisher's exact tests with multiple testing correction
-    - Euclidean & Jaccard distance analysis with bootstrap CIs
-    - Comprehensive metrics (balanced accuracy, AUC, sensitivity, specificity)
-    - Automatic figure and table generation
-    - Complete data capture for publication tables
-
-Author: Nathan Zhuang
-Version: CSBJ Submission Final Draft - Complete Outputs
-Python ≥3.9 required
-"""
+# 07_Full_pipeline_on_clinical_data.py
 
 import pandas as pd
 import numpy as np
@@ -41,18 +23,18 @@ from statsmodels.stats.multitest import multipletests
 
 sns.set(style="whitegrid")
 
-# -----------------------------
+
 # Utility: Clean column names
-# -----------------------------
+
 def normalize_colname(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode('ascii')
     return s.lower().replace('-', '_').replace(' ', '_').strip()
 
-# -----------------------------
+
 # Load data safely
-# -----------------------------
+
 def load_data():
-    file_path = r"C:\Users\natha\Desktop\ClinicalDatasetResearch\Code\cleaned_antibody_data.csv"
+    file_path = r"<file_path>"
     
     # Read the file with UTF-8 encoding
     df = pd.read_csv(file_path, encoding='utf-8')
@@ -100,9 +82,9 @@ def load_data():
     print(f"Final data shape: {df.shape}")
     return df
 
-# -----------------------------
+
 # Standardized diagnosis matching
-# -----------------------------
+
 def standardize_diagnosis(df):
     """Standardize diagnosis column into RA or SS groups."""
     df = df.copy()
@@ -122,9 +104,9 @@ def standardize_diagnosis(df):
     df['diagnosis_group'] = df['diagnosis'].apply(get_diagnosis_group)
     return df
 
-# -----------------------------
+
 # Patient counts
-# -----------------------------
+
 def patient_counts(df):
     df_clean = standardize_diagnosis(df)
     ra = df_clean['diagnosis_group'] == 'ra'
@@ -143,9 +125,9 @@ def patient_counts(df):
     
     return ra_count, ss_count, rf_pos_ss, rf_neg_ss
 
-# -----------------------------
+
 # Generate 2x2 contingency tables with raw counts
-# -----------------------------
+
 def generate_contingency_tables(df):
     """Generate raw 2x2 contingency tables for each antibody"""
     df_clean = standardize_diagnosis(df)
@@ -176,9 +158,9 @@ def generate_contingency_tables(df):
     
     return contingency_tables
 
-# -----------------------------
+
 # Logistic regression with cross-validation and ROC data capture
-# -----------------------------
+
 def run_logistic_analysis(df):
     antibodies = ['hla_b27', 'anti_dsdna', 'anti_sm']
     df_clean = standardize_diagnosis(df)
@@ -316,9 +298,9 @@ def run_logistic_analysis(df):
     
     return analyses, roc_data
 
-# -----------------------------
+
 # Permutation testing for classifier significance
-# -----------------------------
+
 def run_permutation_tests(analyses, n_permutations=100):
     """Run permutation tests for each classifier comparison"""
     print("Permutation Tests")
@@ -370,9 +352,9 @@ def run_permutation_tests(analyses, n_permutations=100):
     
     return permutation_results
 
-# -----------------------------
+
 # Statistical tests with Fisher's exact and multiple testing correction
-# -----------------------------
+
 def statistical_analysis(df):
     """Perform 2x2 contingency analyses with safety checks and FDR correction."""
     df_clean = standardize_diagnosis(df)
@@ -435,9 +417,9 @@ def statistical_analysis(df):
 
     return results_df
 
-# -----------------------------
+
 # Distance analysis with bootstrap confidence intervals and sample storage
-# -----------------------------
+
 def distance_analysis(df):
     """
     Compute Euclidean and Jaccard distances with proper bootstrap confidence intervals.
@@ -518,9 +500,9 @@ def distance_analysis(df):
 
     return df_results, prevalence_data, bootstrap_samples
 
-# -----------------------------
+
 # Generate code hash/version info (FIXED encoding issue)
-# -----------------------------
+
 def generate_code_hash():
     """Generate hash of the current code for reproducibility"""
     current_file = __file__
@@ -558,9 +540,9 @@ def generate_code_hash():
     
     return version_info
 
-# -----------------------------
+
 # Enhanced Visualization with all new plots
-# -----------------------------
+
 def create_visualizations(analyses, stats_results, distance_results, prevalence_data, 
                          roc_data, permutation_results, bootstrap_samples, output_dir="output"):
     os.makedirs(output_dir, exist_ok=True)
@@ -669,12 +651,11 @@ def create_visualizations(analyses, stats_results, distance_results, prevalence_
             plt.savefig(os.path.join(output_dir, 'permutation_tests.png'), dpi=300, bbox_inches='tight')
             plt.close()
 
-# -----------------------------
+
 # Save all results to files
-# -----------------------------
+
 def save_results(analyses, stats_results, distance_results, contingency_tables,
                 roc_data, permutation_results, bootstrap_samples, version_info, output_dir="output"):
-    """Save all analysis results to files for publication"""
     os.makedirs(output_dir, exist_ok=True)
     
     # 1. Save classifier performance table
@@ -733,9 +714,9 @@ def save_results(analyses, stats_results, distance_results, contingency_tables,
     
     print(f"\nAll results saved to {output_dir}/ directory")
 
-# -----------------------------
+
 # Main execution
-# -----------------------------
+
 def main():
     print("Pipeline Start")
     
@@ -789,4 +770,5 @@ def main():
     print("\nPipeline complete. All outputs saved to 'output/' directory.")
 
 if __name__ == "__main__":
+
     main()
