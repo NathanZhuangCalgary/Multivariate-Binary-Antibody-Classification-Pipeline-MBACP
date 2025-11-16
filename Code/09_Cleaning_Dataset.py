@@ -1,20 +1,8 @@
+# 09_Cleaning_Dataset.py
+
 import pandas as pd
 
 def clean_antibody_data_csv(input_file, output_file=None, sheet_name=0):
-    """
-    Clean antibody data from Excel file by:
-    1. Keeping only Rheumatoid Arthritis and Sjögren's Syndrome rows
-    2. Keeping only Disease column and the 5 antibody columns
-    3. Removing rows with any empty cells in the antibody columns
-    
-    Parameters:
-    input_file (str): Path to input Excel file
-    output_file (str): Path to output CSV file (optional)
-    sheet_name (str/int): Sheet name or index to read (default: 0 = first sheet)
-    
-    Returns:
-    pandas.DataFrame: Cleaned dataframe
-    """
     
     # Read the Excel file
     df = pd.read_excel(input_file, sheet_name=sheet_name)
@@ -120,8 +108,8 @@ def detailed_clean_antibody_data_csv(input_file, output_file=None, sheet_name=0)
 # Example usage
 if __name__ == "__main__":
     # Replace with your actual file paths
-    input_filename = r"C:\Users\natha\Desktop\ClinicalDatasetResearch\CleanedDataResults\CleanedData\cleaned_dataset.xlsx"  # Your input Excel file
-    output_filename = 'cleaned_antibody_data.csv'  # Output CSV file
+    input_filename = r"<file_path>"  
+    output_filename = 'cleaned_antibody_data.csv'  
     
     # If you have multiple sheets, specify the sheet name or index:
     # sheet_name = 'Sheet1'  # or sheet_name = 0 for first sheet
@@ -153,3 +141,4 @@ if __name__ == "__main__":
         print("Please install openpyxl or xlrd: pip install openpyxl")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
