@@ -1,16 +1,4 @@
-"""
-Simplified Visualization of Binary Antibody Analysis Results
----------------------------------------------------
-Creates clean, simple figures for all analysis results with error bars:
-- Patient cohort overview
-- Model performance comparisons with stdv error bars
-- Statistical significance
-- Antibody prevalence patterns
-- Distance analysis with Euclidean heatmap and CI error bars
-
-Author: Nathan Zhuang
-Version: Updated Results Visualization with Error Bars
-"""
+# 04_Figure_Generation.py
 
 import pandas as pd
 import numpy as np
@@ -29,9 +17,9 @@ def create_all_figures():
     import os
     os.makedirs("results_figures", exist_ok=True)
     
-    # =========================================================================
+
     # FIGURE 1: Patient Cohort Overview
-    # =========================================================================
+ 
     plt.figure(figsize=(10, 6))
     
     groups = ['RA', 'SS', 'RF+ SS', 'RF- SS']
@@ -53,9 +41,9 @@ def create_all_figures():
     plt.savefig('results_figures/Figure1_Patient_Cohorts.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-    # =========================================================================
+
     # FIGURE 2: Model Performance Comparison with Standard Deviation Error Bars
-    # =========================================================================
+
     comparisons = ['RF+ SS vs RA', 'RF+ SS vs RF- SS', 'RF- SS vs RA', 'SS vs RA']
     
     accuracy = [0.391, 0.608, 0.635, 0.566]
@@ -92,9 +80,9 @@ def create_all_figures():
     plt.savefig('results_figures/Figure2_Model_Performance.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-    # =========================================================================
+
     # FIGURE 3: Statistical Significance Analysis
-    # =========================================================================
+
     antibodies = ['ACPA', 'ANA', 'ANTI_DSDNA', 'ANTI_SM']
     
     chi2_pvals = [0.9419, 0.0880, 0.1621, 0.6830]
@@ -135,9 +123,9 @@ def create_all_figures():
     plt.savefig('results_figures/Figure3_Statistical_Analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-    # =========================================================================
+
     # FIGURE 4: Antibody Prevalence Patterns
-    # =========================================================================
+
     antibodies = ['ACPA', 'ANA', 'ANTI_DSDNA', 'ANTI_SM']
     groups = ['RF+ SS', 'RF- SS', 'SS', 'RA']
     
@@ -167,9 +155,9 @@ def create_all_figures():
     plt.savefig('results_figures/Figure4_Antibody_Prevalence.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-    # =========================================================================
+
     # FIGURE 5: Euclidean Distance Heatmap
-    # =========================================================================
+
     groups = ['RF+ SS', 'RF- SS', 'SS', 'RA']
     
     # Create Euclidean distance matrix with updated values
@@ -201,9 +189,9 @@ def create_all_figures():
     plt.savefig('results_figures/Figure5_Euclidean_Heatmap.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-    # =========================================================================
+
     # FIGURE 6: Performance Summary Heatmap with Standard Deviation Annotation
-    # =========================================================================
+
     comparisons = ['RF+ SS vs RA', 'RF+ SS vs RF- SS', 'RF- SS vs RA', 'SS vs RA']
     metrics = ['Accuracy', 'Balanced\nAccuracy', 'ROC AUC']
     
@@ -242,9 +230,9 @@ def create_all_figures():
     plt.savefig('results_figures/Figure6_Performance_Heatmap.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-    # =========================================================================
+
     # FIGURE 7: Distance Analysis with Confidence Intervals
-    # =========================================================================
+
     comparisons = ['RF+ SS vs RA', 'RF- SS vs RA', 'SS vs RA']
     euclidean_dist = [0.195, 0.348, 0.223]
     ci_lower = [0.068, 0.197, 0.095]
@@ -278,9 +266,9 @@ def create_all_figures():
     plt.savefig('results_figures/Figure7_Distance_CI.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-    # =========================================================================
+
     # FIGURE 8: Comprehensive Performance with All Error Metrics
-    # =========================================================================
+
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10))
     
     # Panel A: Performance metrics with std error bars
@@ -344,3 +332,4 @@ def create_all_figures():
 
 if __name__ == "__main__":
     create_all_figures()
+
