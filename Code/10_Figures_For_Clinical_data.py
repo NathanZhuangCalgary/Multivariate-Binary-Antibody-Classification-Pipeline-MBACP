@@ -1,3 +1,5 @@
+# 10_Figures_For_Clinical_data.py
+
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -332,3 +334,4 @@ def create_clinical_figures():
 
 if __name__ == "__main__":
     create_clinical_figures()
+
