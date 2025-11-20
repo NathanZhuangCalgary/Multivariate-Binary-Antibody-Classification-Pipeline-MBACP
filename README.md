@@ -2,6 +2,10 @@
 
 Code, datasets, and figures for MBACP. 
 
+Datasets used: 
+Ragheb, A. (2024, November). Comprehensive Autoimmune Disorder Dataset. Kaggle. https://doi.org/10.34740/kaggle/dsv/9807734
+Mahdi, M. F., Jahani, A., & Abd, D. H. (2025). Diagnosis of Rheumatic and Autoimmune Diseases Dataset. Data in Brief, 60, 111623. https://doi.org/10.1016/j.dib.2025.111623
+
 Figures generated through python scripts are also included in this repository. 
 
 For reproductibility, locate the dataset location in your personal deivce. Copy the dataset as a pathname. Paste the complete file path into <file path> ensuring that there are no double quotations anywhere. 
